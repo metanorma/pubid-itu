@@ -21,13 +21,25 @@ module Pubid::Itu::Renderer
 
     def render_identifier(params, opts)
       postfix = prefix = ""
+
+      type = @params[:type]
+      language = opts[:language]&.to_s || "en"
+
       if @params[:annex] && @params[:annex][:number].nil?
-        prefix += "Annex to "
-      elsif opts[:language] &&
-          (type_translation = Pubid::Itu::I18N["type"][@params[:type]]&.fetch(opts[:language].to_s, nil))
-        if opts[:language] == :cn
-          postfix =+ type_translation
-        elsif opts[:language] == :ar
+        if opts[:format] == :long &&
+            @params >= { publisher: "ITU", series: "OB", sector: "T" } && opts[:language]
+
+          # render the whole identifier using template in i18n.yaml for long
+          return Pubid::Itu::I18N["annex_to_itu_ob"]&.fetch(language).sub("%", @params[:number])
+        end
+
+        type = "annex"
+      end
+
+      if (type_translation = Pubid::Itu::I18N["type"][type]&.fetch(language, nil))
+        if language == "cn"
+          postfix += type_translation
+        elsif language == "ar"
           postfix += " #{type_translation}"
         else
           prefix += "#{type_translation} "

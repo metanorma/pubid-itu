@@ -11,3 +11,20 @@ type:
     fr: Rec.
     cn: 建议书
     ar: "التوصية"
+
+  annex:
+    ru: Приложение к
+    fr: Annexe au
+    es: Anexo al
+    cn: 附件
+    ar: ملحق
+    en: Annex to
+
+annex_to_itu_ob:
+    ru: Приложение к ОБ % МСЭ
+    fr: Annexe au BE de l'UIT %
+    cn: 国际电联第%期《操作公报》附件
+    ar: ملحق ابلنشرة التشغيلية رقم %
+    es: Anexo al BE de la UIT N.º %
+
+
