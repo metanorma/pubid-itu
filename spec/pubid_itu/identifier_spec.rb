@@ -326,8 +326,30 @@ module Pubid::Itu
     context "Annex to ITU-T OB.1283 (01/2024)" do
       let(:original) { "Annex to ITU-T OB.1283 (01/2024)" }
       let(:pubid) { "Annex to ITU-T OB No. 1283 (01/2024)" }
+      let(:pubid_ru) { "Приложение к МСЭ-T OB No. 1283 (01/2024)" }
+      let(:pubid_cn) { "ITU-T OB No. 1283 (01/2024)附件" }
+      let(:pubid_ar) { "ITU-T OB No. 1283 (01/2024) ملحق" }
+      let(:pubid_es) { "Anexo al UIT-T OB No. 1283 (01/2024)" }
+      let(:pubid_fr) { "Annexe au UIT-T OB No. 1283 (01/2024)" }
+      let(:pubid_long) { "Annex to ITU-T OB No. 1283 (01/2024)" }
+      let(:pubid_long_ru) { "Приложение к ОБ 1283 МСЭ" }
+      let(:pubid_long_fr) { "Annexe au BE de l'UIT 1283" }
+      let(:pubid_long_es) { "Anexo al BE de la UIT N.º 1283" }
+      let(:pubid_long_cn) { "国际电联第1283期《操作公报》附件" }
+      let(:pubid_long_ar) { "ملحق ابلنشرة التشغيلية رقم 1283" }
 
       it_behaves_like "converts pubid to pubid"
+      it_behaves_like "converts pubid to long pubid"
+      it_behaves_like "converts pubid to russian pubid"
+      it_behaves_like "converts pubid to long russian pubid"
+      it_behaves_like "converts pubid to french pubid"
+      it_behaves_like "converts pubid to long french pubid"
+      it_behaves_like "converts pubid to spanish pubid"
+      it_behaves_like "converts pubid to long spanish pubid"
+      it_behaves_like "converts pubid to arabic pubid"
+      it_behaves_like "converts pubid to long arabic pubid"
+      it_behaves_like "converts pubid to chinese pubid"
+      it_behaves_like "converts pubid to long chinese pubid"
     end
 
     context "identifier with language" do
