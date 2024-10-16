@@ -36,7 +36,7 @@ module Pubid::Itu
       let(:pubid_ru) { "Рек. МСЭ-R SA.364-6" }
       let(:pubid_es) { "Rec. UIT-R SA.364-6" }
       let(:pubid_ar) { "ITU-R SA.364-6 التوصية" }
-      let(:pubid_cn) { "ITU-R SA.364-6建议书" }
+      let(:pubid_zh) { "ITU-R SA.364-6建议书" }
 
       it_behaves_like "converts pubid to pubid"
       it_behaves_like "converts pubid to russian pubid"
@@ -183,7 +183,7 @@ module Pubid::Itu
       let(:pubid_es) { "Rec. UIT-T M.3016.1" }
       let(:pubid_fr) { "Rec. UIT-T M.3016.1" }
       let(:pubid_ru) { "Рек. МСЭ-T M.3016.1" }
-      let(:pubid_cn) { "ITU-T M.3016.1建议书" }
+      let(:pubid_zh) { "ITU-T M.3016.1建议书" }
       let(:pubid_ar) { "ITU-T M.3016.1 التوصية" }
 
       it_behaves_like "converts pubid to pubid"
@@ -327,7 +327,7 @@ module Pubid::Itu
       let(:original) { "Annex to ITU-T OB.1283 (01/2024)" }
       let(:pubid) { "Annex to ITU-T OB No. 1283 (01/2024)" }
       let(:pubid_ru) { "Приложение к МСЭ-T OB No. 1283 (01/2024)" }
-      let(:pubid_cn) { "ITU-T OB No. 1283 (01/2024)附件" }
+      let(:pubid_zh) { "ITU-T OB No. 1283 (01/2024)附件" }
       let(:pubid_ar) { "ITU-T OB No. 1283 (01/2024) ملحق" }
       let(:pubid_es) { "Anexo al UIT-T OB No. 1283 (01/2024)" }
       let(:pubid_fr) { "Annexe au UIT-T OB No. 1283 (01/2024)" }

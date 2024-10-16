@@ -9,14 +9,14 @@ type:
     ru: Рек.
     es: Rec.
     fr: Rec.
-    cn: 建议书
+    zh: 建议书
     ar: "التوصية"
 
   annex:
     ru: Приложение к
     fr: Annexe au
     es: Anexo al
-    cn: 附件
+    zh: 附件
     ar: ملحق
     en: Annex to
 

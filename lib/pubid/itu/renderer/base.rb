@@ -37,7 +37,7 @@ module Pubid::Itu::Renderer
       end
 
       if (type_translation = Pubid::Itu::I18N["type"][type]&.fetch(language, nil))
-        if language == "cn"
+        if language == "zh"
           postfix += type_translation
         elsif language == "ar"
           postfix += " #{type_translation}"
