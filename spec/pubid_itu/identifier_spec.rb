@@ -332,11 +332,11 @@ module Pubid::Itu
       let(:pubid_es) { "Anexo al UIT-T OB No. 1283 (01/2024)" }
       let(:pubid_fr) { "Annexe au UIT-T OB No. 1283 (01/2024)" }
       let(:pubid_long) { "Annex to ITU-T OB No. 1283 (01/2024)" }
-      let(:pubid_long_ru) { "Приложение к ОБ 1283 МСЭ" }
-      let(:pubid_long_fr) { "Annexe au BE de l'UIT 1283" }
-      let(:pubid_long_es) { "Anexo al BE de la UIT N.º 1283" }
-      let(:pubid_long_cn) { "国际电联第1283期《操作公报》附件" }
-      let(:pubid_long_ar) { "ملحق ابلنشرة التشغيلية رقم 1283" }
+      let(:pubid_long_ru) { "Приложение к ОБ 1283-R МСЭ" }
+      let(:pubid_long_fr) { "Annexe au BE de l'UIT 1283-F" }
+      let(:pubid_long_es) { "Anexo al BE de la UIT N.º 1283-S" }
+      let(:pubid_long_zh) { "国际电联第1283期《操作公报》附件" }
+      let(:pubid_long_ar) { "ملحق ابلنشرة التشغيلية رقم ‎1283-A" }
 
       it_behaves_like "converts pubid to pubid"
       it_behaves_like "converts pubid to long pubid"

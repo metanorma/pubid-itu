@@ -21,10 +21,10 @@ type:
     en: Annex to
 
 annex_to_itu_ob:
-    ru: Приложение к ОБ % МСЭ
-    fr: Annexe au BE de l'UIT %
-    cn: 国际电联第%期《操作公报》附件
-    ar: ملحق ابلنشرة التشغيلية رقم %
-    es: Anexo al BE de la UIT N.º %
+    ru: Приложение к ОБ %-R МСЭ
+    fr: Annexe au BE de l'UIT %-F
+    zh: 国际电联第%期《操作公报》附件
+    ar: ملحق ابلنشرة التشغيلية رقم ‎%-A
+    es: Anexo al BE de la UIT N.º %-S
 
 
