@@ -18,7 +18,7 @@ end
 
 shared_examples "converts pubid to chinese pubid" do
   it "converts pubid to chinese pubid" do
-    expect(subject.to_s(language: :cn)).to eq(pubid_cn)
+    expect(subject.to_s(language: :zh)).to eq(pubid_zh)
   end
 end
 
@@ -31,6 +31,42 @@ end
 shared_examples "converts pubid to arabic pubid" do
   it "converts pubid to arabic pubid" do
     expect(subject.to_s(language: :ar)).to eq(pubid_ar)
+  end
+end
+
+shared_examples "converts pubid to long pubid" do
+  it "converts pubid to long pubid" do
+    expect(subject.to_s(format: :long)).to eq(pubid_long)
+  end
+end
+
+shared_examples "converts pubid to long french pubid" do
+  it "converts pubid to long french pubid" do
+    expect(subject.to_s(format: :long, language: :fr)).to eq(pubid_long_fr)
+  end
+end
+
+shared_examples "converts pubid to long spanish pubid" do
+  it "converts pubid to long spanish pubid" do
+    expect(subject.to_s(format: :long, language: :es)).to eq(pubid_long_es)
+  end
+end
+
+shared_examples "converts pubid to long chinese pubid" do
+  it "converts pubid to long chinese pubid" do
+    expect(subject.to_s(format: :long, language: :zh)).to eq(pubid_long_zh)
+  end
+end
+
+shared_examples "converts pubid to long russian pubid" do
+  it "converts pubid to long russian pubid" do
+    expect(subject.to_s(format: :long, language: :ru)).to eq(pubid_long_ru)
+  end
+end
+
+shared_examples "converts pubid to long arabic pubid" do
+  it "converts pubid to long arabic pubid" do
+    expect(subject.to_s(format: :long, language: :ar)).to eq(pubid_long_ar)
   end
 end
 

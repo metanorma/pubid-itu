@@ -13,7 +13,7 @@ module Pubid::Itu
 
         return Resolution.new(**parameters) if parameters[:series].to_s == "R"
 
-        return SpecialPublication.new(**parameters) if parameters[:series].to_s == "OB"
+        return OperationalBulletin.new(**parameters) if parameters[:series].to_s == "OB"
 
         if parameters[:regulatory_publication]
           return RegulatoryPublication.new(
