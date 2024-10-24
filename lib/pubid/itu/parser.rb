@@ -9,7 +9,7 @@ module Pubid::Itu
     end
 
     rule(:type) do
-      (dash | space) >> str("REC").as(:type)
+      (dash | space) >> (str("REC")).as(:type)
     end
 
     rule(:subseries) do
@@ -54,7 +54,9 @@ module Pubid::Itu
           (str("/") >> t_sector_series.maybe >> full_number).as(:second_number).maybe >>
           series_range.maybe) |
         # ITU-D
-        (str("D") >> space >> full_number)
+        (str("D") >> space >> full_number) |
+        # ITU OB
+        (t_sector_series >> space >> full_number)
       )
     end
 

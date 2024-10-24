@@ -22,19 +22,8 @@ module Pubid::Itu::Renderer
     def render_identifier(params, opts)
       postfix = prefix = ""
 
-      type = @params[:type]
+      type = @params[:annex] && @params[:annex][:number].nil? ? "annex" : @params[:type]
       language = opts[:language]&.to_s || "en"
-
-      if @params[:annex] && @params[:annex][:number].nil?
-        if opts[:format] == :long &&
-            @params >= { publisher: "ITU", series: "OB", sector: "T" } && opts[:language]
-
-          # render the whole identifier using template in i18n.yaml for long
-          return Pubid::Itu::I18N["annex_to_itu_ob"]&.fetch(language).sub("%", @params[:number])
-        end
-
-        type = "annex"
-      end
 
       if (type_translation = Pubid::Itu::I18N["type"][type]&.fetch(language, nil))
         if language == "zh"
@@ -46,7 +35,7 @@ module Pubid::Itu::Renderer
         end
       end
 
-      "#{prefix}%{publisher}-%{sector} #{render_type_series(params)}%{number}%{subseries}"\
+      "#{prefix}%{publisher}%{sector} #{render_type_series(params)}%{number}%{subseries}"\
       "%{part}%{second_number}%{range}%{annex}%{amendment}%{corrigendum}%{supplement}"\
       "%{addendum}%{appendix}%{date}#{postfix}" % params
     end
@@ -60,8 +49,12 @@ module Pubid::Itu::Renderer
       super
     end
 
-    def render_number(number, _opts, params)
-      return " No. #{number}" if params[:series] == "OB"
+    def render_sector(sector, _opts, params)
+      "-#{sector}" unless params[:series] == "OB"
+    end
+
+    def render_number(number, opts, params)
+      return " No. #{number}" if params[:series] == "OB" && opts[:format] == :long
 
       number
     end
@@ -85,7 +78,7 @@ module Pubid::Itu::Renderer
     end
 
     def render_series(series, _opts, params)
-      series + (params[:series] != "OB" && params[:number] ? "." : "")
+      series + (params[:series] != "OB" && params[:number] ? "." : (params[:number] ? " " : ""))
     end
 
     def render_amendment(amendment, _opts, _params)

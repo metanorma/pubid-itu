@@ -20,11 +20,34 @@ type:
     ar: ملحق
     en: Annex to
 
+itu_ob:
+  long:
+    en: "ITU Operational Bulletin No. %"
+    zh: "国际电联第%期《操作公报》"
+    ar: "رقم% النشرة التشغيلية للاتحاد الدولي للاتصالات"
+    es: "Boletín de explotación de la UIT N.o %"
+    fr: "Bulletin d'exploitation de l'UIT No %"
+    ru: "Оперативный бюллетень МСЭ №. %"
+  short:
+    en: "ITU OB %"
+    zh: "第%期《操作公报》"
+    ar: "النشرة التشغيلية رقم %"
+    es: "BE de la UIT N.º %"
+    fr: "BE de l'UIT %"
+    ru: "ОБ МСЭ №. %"
+
 annex_to_itu_ob:
+  short:
+    fr: Annexe au BE de l'UIT %
+    es: Anexo al BE de la UIT N.º %
+    ar: ملحق بالنشرة التشغيلية رقم ‎%
+    zh: 国际电联第%期《操作公报》附件
+  long:
     ru: Приложение к ОБ %-R МСЭ
     fr: Annexe au BE de l'UIT %-F
     zh: 国际电联第%期《操作公报》附件
     ar: ملحق ابلنشرة التشغيلية رقم ‎%-A
     es: Anexo al BE de la UIT N.º %-S
+    en: Annex to ITU Operational Bulletin No. %
 
 
