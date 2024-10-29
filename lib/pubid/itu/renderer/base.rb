@@ -3,7 +3,7 @@ module Pubid::Itu::Renderer
     TYPE_PREFIX = "".freeze
 
     def render(**args)
-      render_base_identifier(**args) + @prerendered_params[:language].to_s
+      render_base_identifier(**args)
     end
 
     def render_type_series(params)
@@ -21,37 +21,44 @@ module Pubid::Itu::Renderer
 
     def render_identifier(params, opts)
       postfix = prefix = ""
-      if @params[:annex] && @params[:annex][:number].nil?
-        prefix += "Annex to "
-      elsif opts[:language] &&
-          (type_translation = Pubid::Itu::I18N["type"][@params[:type]]&.fetch(opts[:language].to_s, nil))
-        if opts[:language] == :cn
-          postfix =+ type_translation
-        elsif opts[:language] == :ar
+
+      type = @params[:annex] && @params[:annex][:number].nil? ? "annex" : @params[:type]
+      language = @params[:language]&.to_s || "en"
+
+      if (type_translation = Pubid::Itu::I18N["type"][type]&.fetch(language, nil))
+        if language == "zh"
+          postfix += type_translation
+        elsif language == "ar"
           postfix += " #{type_translation}"
         else
           prefix += "#{type_translation} "
         end
       end
 
-      "#{prefix}%{publisher}-%{sector} #{render_type_series(params)}%{number}%{subseries}"\
+      "#{prefix}%{publisher}%{sector} #{render_type_series(params)}%{number}%{subseries}"\
       "%{part}%{second_number}%{range}%{annex}%{amendment}%{corrigendum}%{supplement}"\
       "%{addendum}%{appendix}%{date}#{postfix}" % params
     end
 
     def render_publisher(publisher, opts, params)
-      if opts[:language] &&
-          (publisher_translation = Pubid::Itu::I18N["publisher"][publisher]&.fetch(opts[:language].to_s, nil))
+      if @params[:language] &&
+          (publisher_translation = Pubid::Itu::I18N["publisher"][publisher]&.fetch(@params[:language].to_s, nil))
         return super(publisher_translation, opts, params)
       end
 
       super
     end
 
-    def render_number(number, _opts, params)
-      return " No. #{number}" if params[:series] == "OB"
+    def render_sector(sector, _opts, params)
+      "-#{sector}" unless params[:series] == "OB"
+    end
 
-      number
+    def render_number(number, opts, params)
+      if opts[:with_language] && params[:language]
+        number + (LANGUAGES[params[:language]] ? render_language(params[:language], opts, params) : "")
+      else
+        number
+      end
     end
 
     def render_date(date, opts, _params)
@@ -73,7 +80,7 @@ module Pubid::Itu::Renderer
     end
 
     def render_series(series, _opts, params)
-      series + (params[:series] != "OB" && params[:number] ? "." : "")
+      series + (params[:series] != "OB" && params[:number] ? "." : (params[:number] ? " " : ""))
     end
 
     def render_amendment(amendment, _opts, _params)
@@ -120,8 +127,8 @@ module Pubid::Itu::Renderer
       " App. #{appendix[:number]}"
     end
 
-    def render_language(language, _opts, _params)
-      "-#{LANGUAGES[language]}"
+    def render_language(language, opts, _params)
+      "-#{LANGUAGES[language]}" if opts[:with_language]
     end
   end
 end

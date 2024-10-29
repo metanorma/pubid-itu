@@ -72,7 +72,7 @@ module Pubid::Itu
         let(:params) { { language: "en" } }
 
         it "renders identifier with language" do
-          expect(subject.to_s).to eq("ITU-R V.123-E")
+          expect(subject.to_s(with_language: true)).to eq("ITU-R V.123-E")
         end
       end
 
@@ -94,7 +94,7 @@ module Pubid::Itu
 
         # Annex to ITU-T OB.1283 (01/2024)
         it "renders identifier" do
-          expect(subject.to_s).to eq("ITU-T OB No. #{number} (01/2024)")
+          expect(subject.to_s).to eq("ITU OB #{number} (01/2024)")
         end
       end
 
@@ -107,7 +107,7 @@ module Pubid::Itu
         end
 
         it "renders annex to identifier" do
-          expect(subject.to_s).to eq("Annex to ITU-T OB No. 1")
+          expect(subject.to_s).to eq("Annex to ITU OB 1")
         end
       end
     end
