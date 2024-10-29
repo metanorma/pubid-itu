@@ -345,36 +345,66 @@ module Pubid::Itu
     context "Annex to ITU-T OB.1283 (01/2024)" do
       let(:original) { "Annex to ITU-T OB.1283 (01/2024)" }
       let(:pubid) { "Annex to ITU OB 1283 (01/2024)" }
-      let(:pubid_ru) { "Приложение к МСЭ OB 1283 (01/2024)" }
+      let(:pubid_with_lang) { "Annex to ITU OB 1283 (01/2024)" }
+      let(:pubid_en) { "Annex to ITU OB 1283 (01/2024)" }
+      let(:pubid_en_with_lang) { "Annex to ITU OB 1283-E (01/2024)" }
+      let(:pubid_ru) { "Приложение к ОБ 1283 МСЭ (01/2024)" }
+      let(:pubid_ru_with_lang) { "Приложение к ОБ 1283-R МСЭ (01/2024)" }
       let(:pubid_zh) { "国际电联第1283期《操作公报》附件 (01/2024)" }
+      let(:pubid_zh_with_lang) { "国际电联第1283期《操作公报》附件 (01/2024)" }
       let(:pubid_ar) { "ملحق بالنشرة التشغيلية رقم ‎1283 (01/2024)" }
+      let(:pubid_ar_with_lang) { "ملحق بالنشرة التشغيلية رقم ‎1283-A (01/2024)" }
       let(:pubid_es) { "Anexo al BE de la UIT N.º 1283 (01/2024)" }
+      let(:pubid_es_with_lang) { "Anexo al BE de la UIT N.º 1283-S (01/2024)" }
       let(:pubid_fr) { "Annexe au BE de l'UIT 1283 (01/2024)" }
+      let(:pubid_fr_with_lang) { "Annexe au BE de l'UIT 1283-F (01/2024)" }
       let(:pubid_long) { "Annex to ITU Operational Bulletin No. 1283 (01/2024)" }
-      let(:pubid_long_ru) { "Приложение к ОБ 1283-R МСЭ (01/2024)" }
-      let(:pubid_long_fr) { "Annexe au BE de l'UIT 1283-F (01/2024)" }
-      let(:pubid_long_es) { "Anexo al BE de la UIT N.º 1283-S (01/2024)" }
+      let(:pubid_long_en_with_lang) { "Annex to ITU Operational Bulletin No. 1283 (01/2024)" }
+      let(:pubid_long_with_lang) { "Annex to ITU Operational Bulletin No. 1283 (01/2024)" }
+      let(:pubid_long_ru) { "Приложение к Оперативному бюллетеню МСЭ №. 1283 (01/2024)" }
+      let(:pubid_long_ru_with_lang) { "Приложение к Оперативному бюллетеню МСЭ №. 1283-R (01/2024)" }
+      let(:pubid_long_fr) { "Annexe au BE de l'UIT 1283 (01/2024)" }
+      let(:pubid_long_fr_with_lang) { "Annexe au BE de l'UIT 1283-F (01/2024)" }
+      let(:pubid_long_es) { "Anexo al BE de la UIT N.º 1283 (01/2024)" }
+      let(:pubid_long_es_with_lang) { "Anexo al BE de la UIT N.º 1283-S (01/2024)" }
       let(:pubid_long_zh) { "国际电联第1283期《操作公报》附件 (01/2024)" }
-      let(:pubid_long_ar) { "ملحق ابلنشرة التشغيلية رقم ‎1283-A (01/2024)" }
+      let(:pubid_long_zh_with_lang) { "国际电联第1283期《操作公报》附件 (01/2024)" }
+      let(:pubid_long_ar) { "ملحق ابلنشرة التشغيلية رقم ‎1283 (01/2024)" }
+      let(:pubid_long_ar_with_lang) { "ملحق ابلنشرة التشغيلية رقم ‎1283-A (01/2024)" }
 
       it_behaves_like "converts pubid to pubid"
+      it_behaves_like "converts pubid to pubid with language"
+      it_behaves_like "converts pubid to english pubid"
+      it_behaves_like "converts pubid to english pubid with language"
       it_behaves_like "converts pubid to long pubid"
+      it_behaves_like "converts pubid to long pubid with language"
       it_behaves_like "converts pubid to russian pubid"
+      it_behaves_like "converts pubid to russian pubid with language"
       it_behaves_like "converts pubid to long russian pubid"
+      it_behaves_like "converts pubid to long russian pubid with language"
       it_behaves_like "converts pubid to french pubid"
+      it_behaves_like "converts pubid to french pubid with language"
       it_behaves_like "converts pubid to long french pubid"
+      it_behaves_like "converts pubid to long french pubid with language"
       it_behaves_like "converts pubid to spanish pubid"
+      it_behaves_like "converts pubid to spanish pubid with language"
       it_behaves_like "converts pubid to long spanish pubid"
+      it_behaves_like "converts pubid to long spanish pubid with language"
       it_behaves_like "converts pubid to arabic pubid"
+      it_behaves_like "converts pubid to arabic pubid with language"
       it_behaves_like "converts pubid to long arabic pubid"
+      it_behaves_like "converts pubid to long arabic pubid with language"
       it_behaves_like "converts pubid to chinese pubid"
+      it_behaves_like "converts pubid to chinese pubid with language"
       it_behaves_like "converts pubid to long chinese pubid"
+      it_behaves_like "converts pubid to long chinese pubid with language"
     end
 
     context "identifier with language" do
       let(:pubid) { "ITU-T T.4-E" }
+      let(:pubid_with_lang) { "ITU-T T.4-E" }
 
-      it_behaves_like "converts pubid to pubid"
+      it_behaves_like "converts pubid to pubid with language"
       it { expect(subject.language).to eq("en") }
     end
 

@@ -3,7 +3,7 @@ module Pubid::Itu::Renderer
     TYPE_PREFIX = "".freeze
 
     def render(**args)
-      render_base_identifier(**args) + @prerendered_params[:language].to_s
+      render_base_identifier(**args)
     end
 
     def render_type_series(params)
@@ -23,7 +23,7 @@ module Pubid::Itu::Renderer
       postfix = prefix = ""
 
       type = @params[:annex] && @params[:annex][:number].nil? ? "annex" : @params[:type]
-      language = opts[:language]&.to_s || "en"
+      language = @params[:language]&.to_s || "en"
 
       if (type_translation = Pubid::Itu::I18N["type"][type]&.fetch(language, nil))
         if language == "zh"
@@ -41,8 +41,8 @@ module Pubid::Itu::Renderer
     end
 
     def render_publisher(publisher, opts, params)
-      if opts[:language] &&
-          (publisher_translation = Pubid::Itu::I18N["publisher"][publisher]&.fetch(opts[:language].to_s, nil))
+      if @params[:language] &&
+          (publisher_translation = Pubid::Itu::I18N["publisher"][publisher]&.fetch(@params[:language].to_s, nil))
         return super(publisher_translation, opts, params)
       end
 
@@ -54,9 +54,11 @@ module Pubid::Itu::Renderer
     end
 
     def render_number(number, opts, params)
-      return " No. #{number}" if params[:series] == "OB" && opts[:format] == :long
-
-      number
+      if opts[:with_language] && params[:language]
+        number + (LANGUAGES[params[:language]] ? render_language(params[:language], opts, params) : "")
+      else
+        number
+      end
     end
 
     def render_date(date, opts, _params)
@@ -125,8 +127,8 @@ module Pubid::Itu::Renderer
       " App. #{appendix[:number]}"
     end
 
-    def render_language(language, _opts, _params)
-      "-#{LANGUAGES[language]}"
+    def render_language(language, opts, _params)
+      "-#{LANGUAGES[language]}" if opts[:with_language]
     end
   end
 end

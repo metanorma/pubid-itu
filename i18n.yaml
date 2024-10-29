@@ -42,12 +42,13 @@ annex_to_itu_ob:
     es: Anexo al BE de la UIT N.º %
     ar: ملحق بالنشرة التشغيلية رقم ‎%
     zh: 国际电联第%期《操作公报》附件
+    ru: Приложение к ОБ % МСЭ
   long:
-    ru: Приложение к ОБ %-R МСЭ
-    fr: Annexe au BE de l'UIT %-F
+    ru: Приложение к Оперативному бюллетеню МСЭ №. %
+    fr: Annexe au BE de l'UIT %
     zh: 国际电联第%期《操作公报》附件
-    ar: ملحق ابلنشرة التشغيلية رقم ‎%-A
-    es: Anexo al BE de la UIT N.º %-S
+    ar: ملحق ابلنشرة التشغيلية رقم ‎%
+    es: Anexo al BE de la UIT N.º %
     en: Annex to ITU Operational Bulletin No. %
 
 

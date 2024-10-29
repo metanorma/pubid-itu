@@ -4,7 +4,7 @@ module Pubid::Itu
   module Identifier
     class Base < Pubid::Core::Identifier::Base
       attr_accessor :series, :sector, :date, :amendment, :subseries,
-                    :second_number, :annex, :range
+                    :second_number, :annex, :range, :base
 
       extend Forwardable
 
